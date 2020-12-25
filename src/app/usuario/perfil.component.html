@@ -1,0 +1,91 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">Perfil</div>
+    <div class="card-body table-responsive">
+      <form >
+        <div class="form-group row mb-1">
+          <label for="email" class="col-form-label col-sm-3">email</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              disabled="true"
+              class="form-control"
+              [(ngModel)]="billetera.idUsuario.email"
+              name="email"
+            />
+          </div>
+        </div>
+  
+        <div class="form-group row mb-1">
+          <label for="nombre" class="col-form-label col-sm-3">Nombre</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="billetera.idUsuario.nombre"
+              name="nombre"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row mb-1">
+            <label for="apellido" class="col-form-label col-sm-3">Apellido</label>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="billetera.idUsuario.apellido"
+                name="apellido"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="contrasena" class="col-form-label col-sm-3">Comtrasena</label>
+            <div class="col-sm-6">
+              <input
+                type="password"
+                class="form-control"
+                [(ngModel)]="billetera.idUsuario.contrasena"
+                name="contrasena"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="tarjeta" class="col-form-label col-sm-3">Tarjeta</label>
+            <div class="col-sm-6">
+              <input
+                type="password"
+                class="form-control"
+                [(ngModel)]="billetera.tarjeta"
+                name="tarjeta"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="cvv" class="col-form-label col-sm-3">CVV</label>
+            <div class="col-sm-6">
+              <input
+                type="password"
+                class="form-control"
+                [(ngModel)]="billetera.cvv"
+                name="cvv"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="cvv" class="col-form-label col-sm-3">Tipo Tarjeta</label>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="billetera.idMetodoPago.descripcion"
+                name="cvv"
+              />
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>

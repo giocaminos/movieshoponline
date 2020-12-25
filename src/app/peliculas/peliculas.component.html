@@ -1,0 +1,44 @@
+<div class="card border-primary mb-3">
+  <div class="card-header text-primary"><h5>{{ titulo}}</h5></div>
+  <div class="card-body text-primary">
+
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/peliculas/form']" *ngIf="authService.hasRole('ROLE_ADMIN')">Crear Pelicula</button>
+    </div>
+
+    <div class="table-responsive">
+      <div class="alert alert-info" *ngIf="peliculas?.length == 0">
+        No hay Registros que mostrar
+      </div>
+      <table class="table" *ngIf="peliculas?.length>0">
+        <div *ngFor="let pelicula of peliculas">
+          <div class="card"  >            
+            <div style="text-align: center;"><br><br>
+            <img style="border-radius: 50px 50px 0 0; width: 90%; box-shadow: 0 0 20px rgba(0, 0, 0, 1);" [src]=  "pelicula.imagen" class="card-img-top" />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; font-size: xx-large;">{{ pelicula.titulo }}</h5>
+              <p class="card-text" style="font-weight: bolder; font-size: large;  margin-left: 5%; margin-right: 5%;">
+                {{ pelicula.idCategoria.descripcion }}
+              </p>
+              <p class="card-text" style="font-style: italic; font-weight: bolder; font-size: medium;  margin-left: 5%; margin-right: 5%;">
+                {{ pelicula.idClasificacion.descripcion }}
+              </p>
+              <p class="card-text" style="text-align: justify; margin-left: 5%; margin-right: 5%;">
+                {{ pelicula.descripcion }}
+              </p>
+              <div style="text-align: center;">
+                <a (click)="megusta(pelicula)" class="btn btn-info btn-lg" style="margin-right: 10px;">Me gusta</a>
+                <a [routerLink]="['/pelicula/detalle/', pelicula.id]" class="btn btn-warning btn-lg" style="margin-right: 10px;">Ver Detalle</a>
+                <a [routerLink]="['/peliculas/form/', pelicula.id]"  class="btn btn-success btn-lg" style="margin-right: 10px;" *ngIf="authService.hasRole('ROLE_ADMIN')">Editar</a>
+                <a (click)="delete(pelicula)" class="btn btn-danger btn-lg" style="margin-right: 10px;" *ngIf="authService.hasRole('ROLE_ADMIN')">Eliminar</a>
+              </div>
+            </div>
+          </div>
+          <br />
+        </div>
+      </table>
+      <paginator-nav *ngIf="paginadorPapa" [paginadorHijo] = "paginadorPapa"></paginator-nav>
+    </div>
+  </div>
+</div>

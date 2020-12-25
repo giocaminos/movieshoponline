@@ -1,0 +1,29 @@
+<div class="card border-primary text-center">
+    <div class="card-header ">{{ titulo }}</div>
+    <div class="card-body">
+
+        <form >
+            <div class="form-group ">
+                <input type="text" [(ngModel)]="usuario.email" class="form-control" name="userame" id="username" placeholder="username@dominio.com" autofocus required=tue>
+            </div><br>
+            <div class="form-group ">
+                <input type="submit" (click)="enviar('Email')" class="btn btn-primary btn-block " style="margin-right: 3%;" value="Enviar Tocken al correo">
+                <input type="submit" (click)="enviar('Telefono')" class="btn btn-primary btn-block" value="Enviar Tocken al telefono">
+            </div>            
+            <br>
+        </form> 
+        <form (ngSubmit)="cambiar()" id="cambiar">
+            <div class="form-group ">
+                <input type="password" [(ngModel)]="usuario.contrasena" class="form-control" name="password" id="password" placeholder="password" required>
+            </div><br>
+            <div class="form-group ">
+                <input type="text" [(ngModel)]="tocken" class="form-control" name="tocken" id="tocken" placeholder="tocken" required>
+            </div><br>
+            <div class="form-group ">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Cambiar">
+            </div>
+        </form>
+              
+    </div>
+
+</div>

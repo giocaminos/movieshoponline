@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+        
+        
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item " routerLinkActive="active-link">
+            <a class="nav-link " *ngIf="authService.isAutenticado()" [routerLink]="['/perfil']">Perfil</a>
+          </li>
+          <li class="nav-item " routerLinkActive="active-link">
+            <a class="nav-link " *ngIf="authService.isAutenticado()"  [routerLink]="['/detallecompras']">Historial</a>
+          </li>
+          <li class="nav-item " routerLinkActive="active-link">
+            <a class="nav-link " routerLink='/peliculas'>Peliculas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/peliculas/populares/0']">Populares</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categorias
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li *ngFor="let c of categorias">
+                <a class="dropdown-item" [routerLink]="['/peliculas/catgoria/', c.id]">{{c.descripcion}}</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown"  *ngIf="authService.hasRole('ROLE_ADMIN')">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+              Administracion
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+              <li class="nav-item" >
+                <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true" routerLink='/categorias'>Categorias</a>
+              </li>
+              <li class="nav-item">
+                <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true" routerLink='/clasificaciones'>Clasificacion</a>
+              </li>
+              <li class="nav-item">
+                <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true" routerLink='/rollusuario'>Roles Usuario</a>
+              </li>
+              <li class="nav-item">
+                <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true" routerLink='/metodopagos'>Metodos Pago</a>
+              </li>
+              <li class="nav-item">
+                <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true" [routerLink]="['/disponibilidad/true']">Peliculas Disponibles</a>
+              </li>
+              <li class="nav-item">
+                <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true" [routerLink]="['/disponibilidad/false']">Pelicula no Disponibles</a>
+              </li>
+              <li class="nav-item">
+                <a class="dropdown-item" href="#" tabindex="-1" aria-disabled="true" routerLink='/detallecompras'>Registro de compras</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+       
+        <form class="d-flex"    >
+          <input [(ngModel)]="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+          <button [routerLink]="['peliculas/coincidencias/', search]" class="btn btn-outline-success me-3" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav navbar-right">
+          <li *ngIf="!authService.isAutenticado()" ><a [routerLink]="['/login']" class="btn btn-primary">Sing in</a></li>
+          <li *ngIf="authService.isAutenticado()" ><button (click)="logout()" class="btn btn-warning">Logout</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  

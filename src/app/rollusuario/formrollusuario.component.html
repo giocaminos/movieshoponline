@@ -1,0 +1,64 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">Edicion Roles</div>
+    <div class="card-body">
+      <form (ngSubmit)="create()">
+        <div class="form-group row mb-1">
+          <label for="id" class="col-form-label col-sm-3">email</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              disabled="true" disabled="true"
+              [(ngModel)]="rollusuario.idUsuario.email"
+              name="id"
+            />
+          </div>
+        </div>
+  
+        <div class="form-group row mb-1">
+          <label for="nombre" class="col-form-label col-sm-3"
+            >Nombre</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control" disabled="true"
+              [(ngModel)]="rollusuario.idUsuario.nombre"
+              name="nombre"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row mb-1">
+            <label for="apellido" class="col-form-label col-sm-3"
+              >Apellido</label
+            >
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control" disabled="true"
+                [(ngModel)]="rollusuario.idUsuario.apellido"
+                name="apellido"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="" class="col-form-label col-sm-3">Roll Usuario</label>
+            <div class="col-sm-6">
+              <select [compareWith] ="comparar" class="form-control" [(ngModel)]="rollusuario.idRoll" name="roll" >
+              <option [ngValue]="obj" *ngFor="let obj of rolles" >{{obj.descripcion}}</option>
+            </select>
+            </div>
+          </div>
+
+  
+        <div class="form-group row mt-2">
+          <div class="col-sm-6">
+            <button class="btn btn-primary" role="button">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

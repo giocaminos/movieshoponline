@@ -1,0 +1,154 @@
+<div class="card border-primary mb-3">
+  <div class="card-header text-primary"><h5>Informacion General de Pelicula</h5></div>
+  <div class="card-body">
+    <form (ngSubmit)="create()">      
+
+      <div class="card ">
+        <div class="card-header"><h5>Datos Generales</h5></div>
+        <div class="card-body">
+          <div class="form-group row mb-2">
+            <label for="titulo" class="col-form-label col-sm-4">Titulo</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" [(ngModel)]="pelicula.titulo" name="titulo"/>
+            </div>
+          </div>
+    
+          <div class="form-group row mb-2">
+            <label for="descripcion" class="col-form-label col-sm-4">Descripcion</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" [(ngModel)]="pelicula.descripcion" name="descripcion"/>
+            </div>
+          </div>
+    
+          <div class="form-group row mb-2">
+            <label for="imagen" class="col-form-label col-sm-4">Imagen</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" [(ngModel)]="pelicula.imagen" name="imagen"/>
+            </div>
+          </div>
+    
+  <!--<div class="form-group row mb-2">
+            <label for="inputGroupFile04" class="col-form-label col-sm-4">Imagen</label>
+            <div class="custom-file col-sm-6">
+            <div >
+              <input (change)="seleccionarFoto($event)" type="file" class="custom-file-input" id="inputGroupFile04">          
+            </div>
+            <div class="input-group-append">
+              <button (click)="subirFoto()" class="btn btn-outline-secondary" type="button">Button</button>
+            </div>        
+          </div>
+        </div> -->
+    
+          <div class="form-group row mb-2 mt-2">
+            <label for="activo" class="col-form-label col-sm-4">Activo</label>
+            <div class="col-sm-6">
+              <select  class="selectpicker rounded" style="height: 90%;" [(ngModel)]="pelicula.activo" name="activo">
+              <option [ngValue]="true" >Activo</option>
+              <option [ngValue]="false" >Inactivo</option>
+            </select>
+            </div>
+          </div>      
+    
+          <!--<div class="form-group row mb-2">
+            <label for="url" class="col-form-label col-sm-4">URL</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" [(ngModel)]="pelicula.url" name="url"/>
+            </div>
+          </div>-->
+    
+          <div class="form-group row mb-2">
+            <label for="stock" class="col-form-label col-sm-4">Stock</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" [(ngModel)]="pelicula.stock" name="stock"/>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label for="montoPelicula" class="col-form-label col-sm-4">Costo Por Compra Pelicula</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" [(ngModel)]="pelicula.montoPelicula" name="montoPelicula"/>
+            </div>
+          </div>
+    
+          <div class="form-group row mb-2">
+            <label for="categoria" class="col-form-label col-sm-4">Categoria</label>
+            <div class="col-sm-6">
+              <select [compareWith] ="compararCategoria" class="form-control" [(ngModel)]="pelicula.idCategoria" name="categoria">
+              <option [ngValue]="cat" *ngFor="let cat of categorias" >{{cat.descripcion}}</option>
+            </select>
+            </div>
+          </div>
+    
+          <div class="form-group row mb-2">
+            <label for="clasificacion" class="col-form-label col-sm-4">Clasificacion</label>
+            <div class="col-sm-6">
+              <select [compareWith] ="compararClasificacion" class="form-control" [(ngModel)]="pelicula.idClasificacion" name="clasificacion" >
+              <option [ngValue]="cla" *ngFor="let cla of clasificaciones" >{{cla.descripcion}}</option>
+            </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<br>
+      <div class="card ">
+        <div class="card-header"><h5>Costo Normal Por Renta</h5></div>
+        <div class="card-body">
+          <div class="form-group row mb-2">
+            <label for="nomtonormal" class="col-form-label col-sm-4">Costo de Renta</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" [(ngModel)]="pelicula.montoNormal" name="nomtonormal"/>
+            </div>
+          </div>
+    
+          <div class="form-group row mb-2">
+            <label for="montomora" class="col-form-label col-sm-4">Monto Mora</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" [(ngModel)]="pelicula.montoMora" name="montomora"/>
+            </div>
+          </div>
+    
+          <div class="form-group row mb-2">
+            <label for="iva" class="col-form-label col-sm-4">IVA</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" [(ngModel)]="pelicula.iva" name="iva"/>
+            </div>
+          </div>
+        </div>
+      </div>
+<br>
+      <div class="card ">
+        <div class="card-header"><h5>Costo de Estreno</h5></div>
+        <div class="card-body">
+          <div class="form-group row mb-2">
+            <label for="montoAdicionalEstreno" class="col-form-label col-sm-4">Monto Adicional Estreno</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" [(ngModel)]="pelicula.montoAdicionalEstreno" name="montoAdicionalEstreno"/>
+            </div>
+          </div>
+    
+          <div class="form-group row mb-2">
+            <label for="fechaInicioEstreno" class="col-form-label col-sm-4">Fecha Inicio Estreno</label>
+            <div class="col-sm-6">
+              <input type="date" class="form-control" [(ngModel)]="pelicula.fechaInicioEstreno" name="fechaInicioEstreno"/>
+            </div>
+          </div>
+    
+          <div class="form-group row mb-2">
+            <label for="fechaFinEstreno" class="col-form-label col-sm-4">Fecha Fin Estreno</label>
+            <div class="col-sm-6">
+              <input type="date" class="form-control" [(ngModel)]="pelicula.fechaFinEstreno" name="fechaFinEstreno"/>
+            </div>
+          </div>
+        </div>
+      </div> 
+     <br>
+      <div class="form-group row mt-2">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="button">Guardar</button>
+        </div>
+      </div>
+     
+    </form>
+  </div>
+</div>

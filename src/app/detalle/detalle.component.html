@@ -1,0 +1,52 @@
+<div class="card border-primary mb-3">
+    <div class="card-header text-primary"><h5>{{ pelicula.titulo }}</h5></div>
+    <div class="card-body text-primary">
+  
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/peliculas/form']" *ngIf="authService.hasRole('ROLE_ADMIN')">Crear Pelicula</button>
+      </div>
+  
+      <div class="table-responsive">        
+        <table class="table">
+          <div >
+            <div class="card"  >
+              
+           
+              <p style="text-indent: 5px">
+                <img style="border-radius: 50px 50px 0 0; float: left; width: 60%; margin-left: 2%; box-shadow: 0 0 20px rgba(0, 0, 0, 1);" [src]="pelicula.imagen" class="card-img-top"  />
+           
+                <label style="font-weight: bolder; font-size: medium; margin: 10px 0 0 10px; margin-left: 2%;">Precio Compra</label><br>
+                <label style="margin: 10px 0 0 10px; margin-left: 2%;">${{pelicula.montoNormal}}</label><br>
+                <label style="font-weight: bolder; font-size: medium; margin: 10px 0 0 10px; margin-left: 2%;">Precio Renta</label><br>
+                <label style="margin: 10px 0 0 10px; margin-left: 2%;">${{pelicula.montoPelicula}}</label><br>
+                <label style="font-weight: bolder; font-size: medium; margin: 10px 0 0 10px; margin-left: 2%;">Disponible</label><br>
+                <label style="margin: 10px 0 0 10px; margin-left: 2%;">{{pelicula.stock}}</label><br>
+
+                <a (click)="megusta(pelicula)" class="btn btn-info" style="margin: 10px 0 0 10px; margin-left: 2%;">Me gusta</a>
+              </p>
+              <h2 class="card-title "  style="margin-left: 2%; font-weight: bolder; ">{{ pelicula.titulo }}</h2>
+              <label style="font-weight: bolder; font-size: medium; margin-left: 2%;">Categoria</label>
+              <label style="margin-top: -20px; margin-left: 2%;">{{pelicula.idCategoria.descripcion}}</label>
+              <label style="font-weight: bolder; font-size: medium; margin-left: 2%;">CLasificasion</label>
+              <label style="margin-top: -20px; margin-left: 2%;">{{pelicula.idClasificacion.descripcion}}</label>
+
+              <div class="card-body">                
+                <h6 class="card-title "  style="margin-left: 2%; font-weight: bolder; font-size: x-large;">Descripcion</h6>
+                <p class="card-text" style="margin-left: 2%; margin-right: 2%;">
+                  {{ pelicula.descripcion }}
+                </p>
+                <div style="text-align: center;">
+                  <a (click)="comprar('Compra')" class="btn btn-primary btn-lg" style="margin-right: 10px;">Comprar</a>
+                <a (click)="comprar('Renta')" class="btn btn-warning btn-lg " style="margin-right: 10px;">Alquilar</a>
+                
+                <a [routerLink]="['/peliculas/form/', pelicula.id]"  class="btn btn-success btn-lg" style="margin-right: 10px;" *ngIf="authService.hasRole('ROLE_ADMIN')">Editar</a>
+                <a (click)="delete(pelicula)" class="btn btn-danger btn-lg" style="margin-right: 10px;" *ngIf="authService.hasRole('ROLE_ADMIN')">Eliminar</a>
+              </div>
+              </div>
+            </div>
+            <br />
+          </div>
+        </table>        
+      </div>
+    </div>
+  </div>

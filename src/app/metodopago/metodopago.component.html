@@ -1,0 +1,32 @@
+<div class="card border-primary mb-3">
+    <div class="card-header text-primary"><h5>Metodo de Pago</h5></div>
+    <div class="card-body text-primary">
+
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/metodopago/nuevo']" routerLinkActive="router-link-active" >Crear Metodo Pago</button>
+      </div> 
+
+      <table class="table table-bordered table-striped ">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Descripcion</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of metodopagos"> 
+            <td>{{ item.id }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>
+              <button type="button"   name="editar" [routerLink]="['/metodopago/edicion/', item.id]" class="btn btn-primary">Editar</button>
+            </td>
+            <td>
+              <button type="button"   name="eliminar" (click)='delete(item)' class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

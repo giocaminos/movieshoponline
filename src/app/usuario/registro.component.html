@@ -1,0 +1,107 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">Registro</div>
+    <div class="card-body">
+      <form (ngSubmit)="create()">
+        <div class="form-group row mb-1">
+          <label for="email" class="col-form-label col-sm-3">email</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="billetera.idUsuario.email"
+              name="email" required ="true"
+            />
+          </div>
+        </div>
+  
+        <div class="form-group row mb-1">
+          <label for="nombre" class="col-form-label col-sm-3">Nombre</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="billetera.idUsuario.nombre"
+              name="nombre" required ="true"
+            />
+          </div>
+        </div>
+
+        <div class="form-group row mb-1">
+            <label for="apellido" class="col-form-label col-sm-3">Apellido</label>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="billetera.idUsuario.apellido"
+                name="apellido" required ="true"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="telefono" class="col-form-label col-sm-3">Telefono</label>
+            <div class="col-sm-6">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="billetera.idUsuario.telefono"
+                onKeyPress="if(this.value.length==8) return false;"
+                name="telefono" required ="true"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="contrasena" class="col-form-label col-sm-3">Comtrasena</label>
+            <div class="col-sm-6">
+              <input
+                type="password"
+                class="form-control"
+                [(ngModel)]="billetera.idUsuario.contrasena"
+                name="contrasena" required ="true"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="tarjeta" class="col-form-label col-sm-3">Tarjeta</label>
+            <div class="col-sm-6">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="billetera.tarjeta"
+                name="tarjeta" required ="true"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="cvv" class="col-form-label col-sm-3">CVV</label>
+            <div class="col-sm-6">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="billetera.cvv"
+                name="cvv" required ="true"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="metodo" class="col-form-label col-sm-3">Categoria</label>
+            <div class="col-sm-6">
+              <select class="form-control" [(ngModel)]="billetera.idMetodoPago" name="metodo">
+              <option  [ngValue]="m" *ngFor="let m of metodoPagos" >{{m.descripcion}}</option>
+            </select>
+            </div>
+          </div>
+  
+        <div class="form-group row mt-2">
+          <div class="col-sm-6">
+            <button class="btn btn-primary" role="button" >Registrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
