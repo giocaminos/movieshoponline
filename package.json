@@ -11,7 +11,7 @@
     "dev:ssr": "ng run peliculas:serve-ssr",
     "serve:ssr": "node dist/peliculas/server/main.js",
     "build:ssr": "ng build --prod && ng run peliculas:server:production",
-    "postinstall": "ng build --output-path peliculas --aot --prod"
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
