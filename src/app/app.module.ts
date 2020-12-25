@@ -25,7 +25,6 @@ import { DetallecomprasComponent } from './historial/detallecompras.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { DetalleComponent } from './detalle/detalle.component';
 import { LoaderInterceptor } from './interceptors/interceptor';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SpinnerComponent } from './spinner/spinner.component'
 import { SpinnerService } from './servicios/spinner.service';
@@ -94,9 +93,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
     onSameUrlNavigation: 'reload',
     initialNavigation: 'enabled'
-}),
-    NgxSpinnerModule,
-  ],
+})],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     SpinnerService,
