@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '../authorization/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { MeGusta } from '../clases/MeGusta';
+import { MeGusta } from 'src/app/clases/MeGusta';
 
 @Injectable({
   providedIn: 'root',
