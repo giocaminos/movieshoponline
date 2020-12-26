@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'
+import { MeGusta } from '../clases/MeGusta';
 import { urlBase, urlLista, urlPublica, urlSave, urlDelete, urlMegusta,} from '../clases/urlglobales';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '../authorization/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { MeGusta } from 'src/app/clases/MeGusta';
 
 @Injectable({
   providedIn: 'root',
