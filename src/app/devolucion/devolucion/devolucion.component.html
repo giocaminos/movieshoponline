@@ -1,0 +1,47 @@
+<div class="card border-primary mb-3">
+    <div class="card-header text-primary"><h5>Devolucion de Peliculas Rentadas</h5></div>
+      <div class="card-body text-primary">
+          <div class="table-responsive">
+              <div class="alert alert-info" *ngIf="detalleCompras?.length === 0">
+                  No hay Registros que mostrar
+              </div>
+              <table class="table table-striped" *ngIf="detalleCompras?.length > 0" >
+                  <div></div>
+                  <thead>
+                  <tr>                      
+                      <th scope="col">Email</th>                    
+                      <th scope="col">Compra</th>
+                      <th scope="col">Fecha Entrega</th>
+                      <th scope="col">Fecha Entregada</th>
+                      <th scope="col">Tipo</th>
+                      <th scope="col">Monto</th>
+                      <th scope="col">Mora</th>
+                      <th scope="col">Total pagado</th>
+                      <th scope="col">Pelicula</th>
+                      <th scope="col">Devolucion</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let d of detalleCompras">                                  
+                      <td>{{d.idUsuario.email}}</td>                     
+                      <td>{{d.fechaCompra}}</td>
+                      <td>{{d.fechaFinRenta}}</td>
+                      <td>{{d.fechaEntregaPelicula != null? d.fechaEntregaPelicula:'Pendiente'}}</td>                      
+                      <td>{{d.fechaFinRenta != null? 'Renta':'Compra'}}</td>
+                      <td>${{ (d.montoNormal != null ? d.montoNormal : '')
+                        + (d.montoPelicula != null ? d.montoPelicula : '')
+                        + (d.montoAdicionalEstreno != null ? d.montoAdicionalEstreno : '') }}</td>
+                      <td>{{d.montoMora != null? d.montoMora:'No aplica'}}</td>
+                      <td>${{ (d.montoMora != null ? d.montoMora : '' )
+                          + (d.montoNormal != null ? d.montoNormal : '')
+                          + (d.montoPelicula != null ? d.montoPelicula : '')
+                          + (d.montoAdicionalEstreno != null ? d.montoAdicionalEstreno : '') }}</td>
+                      <td>{{d.idPelicula.titulo}}</td>
+                      <td><button type="button"   name="editar"  #d (click)="entregar(d)" class="btn btn-primary">Entregar</button></td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+  

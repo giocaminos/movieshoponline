@@ -27,6 +27,7 @@ import { LoaderInterceptor } from './interceptors/interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SpinnerComponent } from './spinner/spinner.component'
 import { SpinnerService } from './servicios/spinner.service';
+import { DevolucionComponent } from './devolucion/devolucion/devolucion.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent },
   { path: 'detallecompras', component: DetallecomprasComponent },
   { path: 'disponibilidad/:disponibilidad', component: PeliculasComponent },
+  { path: 'devolucionpelicula', component: DevolucionComponent },
 ];
 @NgModule({
   declarations: [
@@ -83,6 +85,7 @@ const routes: Routes = [
     PaginatorComponent,
     DetalleComponent,
     SpinnerComponent,
+    DevolucionComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
