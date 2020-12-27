@@ -1,10 +1,10 @@
 import { HttpHeaders } from '@angular/common/http';
 
-//export const urlBase = 'https://moveshop.herokuapp.com/API/';
-//export const urlLogin = 'https://moveshop.herokuapp.com/oauth/token';
+export const urlBase = 'https://moveshop.herokuapp.com/API/';
+export const urlLogin = 'https://moveshop.herokuapp.com/oauth/token';
 
-export const urlBase = 'http://localhost:8080/API/';
-export const urlLogin = 'http://localhost:8080/oauth/token';
+//export const urlBase = 'http://localhost:8080/API/';
+//export const urlLogin = 'http://localhost:8080/oauth/token';
 
 //export const urlBaseImagen = 'https://moveshop.herokuapp.com/uploads/';
 //export const urlBaseImagen = 'http//:localhost:8080/API/uploads/';
